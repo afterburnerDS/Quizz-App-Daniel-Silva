@@ -44,7 +44,7 @@ const Questions = [
 
 const Scores = ["You must be a benfica fan :/", "Aweosome. You are a true fan !", "Incredible ! FC Porto wants You !"];
 
-const Feedback = ["Wrong Answear !", "Correct Answear !"]
+const Feedback = [" is a wrong answer !", "The correct answer is "]
 
 const totalQuestions = Questions.length;
 let currentQuestion = 0;
@@ -67,7 +67,7 @@ function renderFinalPageFeedback(){
         $(".result").toggleClass("colorMeh");
     }else{
         $(".result").text(Scores[2]);
-        $(".result").toggleClass("colorCorrect");
+        $(".result").toggleClass(".colorCorrect");
     }
     toggleFinalScore();
     handleResetGameClicked();
@@ -181,14 +181,15 @@ function toggleFeedback(){
     if ('correct' in newQuestion){
         // console.log("newQuestiono tem correct" + newQuestion.correct);
         //show/hide feedback
-        $('.feedback').toggleClass("nodisplay");
+       
         if(newQuestion.correct == answearChecked) {
         //Display "youre correct" or "your re wrong" below the titles, depending on the first result
 
         // console.log("CORRECTO");
         
-            $('.feedback').text(Feedback[1]);
-            $('.feedback').toggleClass("colorCorrect");
+            $('.feedback__positive').toggleClass("nodisplay");
+            $('.feedback__positive').text("Correct! " +Feedback[1] + newQuestion.answears[answearChecked-1]);
+            $('.feedback__positive').toggleClass("colorCorrect");
             //update  isCorrect
             isCorrect =true;
             //Hide/ Show green border and check symbol on correct answear
@@ -201,8 +202,12 @@ function toggleFeedback(){
 
             // console.log("INCORRECTO");
             isCorrect =false;
-            $('.feedback').text(Feedback[0]);
-            $('.feedback').toggleClass("colorIncorrect");
+            $('.feedback__negative').toggleClass("nodisplay");
+            $('.feedback__negative').text(newQuestion.answears[answearChecked-1]+Feedback[0]);
+            $('.feedback__negative').toggleClass("colorIncorrect");
+            $('.feedback__positive').toggleClass("nodisplay");
+            $('.feedback__positive').text(Feedback[1] +newQuestion.answears[newQuestion.correct-1]);
+            $('.feedback__positive').toggleClass("colorCorrect");
             //Hide / Show red border and x symbol if the submitted answear was not the correct one
             $("input[name=answears][value=" + answearChecked + "]").parent().toggleClass("borderincorrect");
             $("input[name=answears][value=" + answearChecked + "]").siblings(".answears__item__button--incorrect").toggleClass("nodisplay");
@@ -252,8 +257,9 @@ function renderWelcomePage(){
             //removes finalpage elements
             toggleFinalScore();
         }else{
-            let classList = $(".feedback").prop("classList")
-            if(-1 != $.inArray("nodisplay",classList)){
+            let classListNegative = $(".feedback__negative").prop("classList");
+            let classListPositive = $(".feedback__positive").prop("classList");
+            if(-1 != $.inArray("nodisplay",classListNegative) && -1 != $.inArray("nodisplay",classListPositive) ){
                 //question page
                 toggleDisplayQuestion();
             }else{
@@ -355,15 +361,26 @@ function handleResetGameClicked(){
 
 function handleSubmitQuestionClicked(){
 
-    $(".answears input[type='radio']").off('click');
+    $(".answears__btnsub--sub").off('click');
+    
+    // $(".answears input[type='radio']").off('click');
 
-    $(".answears input[type='radio']").click(function(event){
+
+    $(".answears__btnsub--sub").on('click',function(event){
         // code here
         event.preventDefault();
-        answearChecked = $('input[name=answears]:checked', '.answears').val();
+        answearChecked = $('input[name=answears]:checked', '.answears').val();          
         toggleFeedback();
         console.log("Loaded feedback");
-      })
+      });
+
+    // $(".answears input[type='radio']").submit(function(event){
+    //     // code here
+    //     event.preventDefault();
+    //     answearChecked = $('input[name=answears]:checked', '.answears').val();
+    //     toggleFeedback();
+    //     console.log("Loaded feedback");
+    //   });
 }
 
 function handlequestions(){

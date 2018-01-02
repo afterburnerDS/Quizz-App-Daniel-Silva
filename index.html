@@ -33,7 +33,10 @@
         </header>
 
         <main role="main" class="content">
-            <p class="feedback nodisplay ">feedback dynamicly</p>
+            <div class="feedback ">
+                    <p class="feedback__negative nodisplay ">feedback dynamicly</p>
+                    <p class="feedback__positive nodisplay ">feedback dynamicly</p>
+            </div>
             <div class="instructions nodisplay">
                 <p>Welcome to  FC Porto's "The History so Far" Quizz. In this game you are going to be tested about the history and culture of one of the most respected clubs in Europe. Take a moment to read through the instructions and let´s play !</p>
                 
@@ -54,12 +57,28 @@
             </div>
             <form action="/login" method="post" class="answears">
 
-                <div class="answears__box">
+                <fieldset class="answears__box">
+                   
+                            <legend class="nodisplay">Choice</legend>
+
+                        <div class="answears__item">
+
+                            <input type="radio" name="answears" id="answears_1" value="1" class="answears__item__button--button">
+
+                            <label for="answears_1" class="textanswear textanswear1">Lorem ipsum dolor sit amet.</label>
+
+                            <span class="answears__item__button--correct nodisplay">&radic;</span>
+
+                            <span class="answears__item__button--incorrect nodisplay">x</span>
+
+                        </div>
+
+                    
                     <div class="answears__item">
 
-                        <input type="radio" name="answears" value="1" class="answears__item__button--button">
+                        <input type="radio" name="answears" id="answears_2" value="2" class="answears__item__button--button">
 
-                        <span class="textanswear textanswear1">Lorem ipsum dolor sit amet.</span>
+                        <label for="answears_2" class="textanswear  textanswear2">Lorem ipsum dolor sit amet.</span>
 
                         <span class="answears__item__button--correct nodisplay">&radic;</span>
 
@@ -70,23 +89,10 @@
                     </div>
                     <div class="answears__item">
 
-                        <input type="radio" name="answears" value="2" class="answears__item__button--button">
-
-                        <span class="textanswear  textanswear2">Lorem ipsum dolor sit amet.</span>
-
-                        <span class="answears__item__button--correct nodisplay">&radic;</span>
-
-                        <span class="answears__item__button--incorrect nodisplay">x</span>
+                        <input type="radio" name="answears" id="answears_3" value="3" class="answears__item__button--button">
 
 
-
-                    </div>
-                    <div class="answears__item">
-
-                        <input type="radio" name="answears" value="3" class="answears__item__button--button">
-
-
-                        <span class="textanswear textanswear3">Lorem ipsum dolor sit amet.</span>
+                        <label for="answears_3" class="textanswear textanswear3">Lorem ipsum dolor sit amet.</span>
 
                         <span class="answears__item__button--correct nodisplay">&radic;</span>
 
@@ -96,24 +102,24 @@
                     </div>
                     <div class="answears__item">
 
-                        <input type="radio" name="answears" value="4" class="answears__item__button--button">
+                        <input type="radio" name="answears" id="answears_4" value="4" class="answears__item__button--button">
 
 
-                        <span class="textanswear textanswear4">Lorem ipsum dolor sit amet.</span>
+                        <label for="answears_4" class="textanswear textanswear4">Lorem ipsum dolor sit amet.</span>
 
                         <span class="answears__item__button--correct nodisplay">&radic;</span>
 
                         <span class="answears__item__button--incorrect nodisplay">x</span>
 
                     </div>
+                
+                </fieldset>
 
-                </div>
-<!-- 
-                <input type="submit" name="submit" value="Submit" class="answears__btnsub answears__btnsub--sub "> -->
+                <input type="submit" name="submit" value="Submit" class="answears__btnsub answears__btnsub--sub ">
 
             </form>
-
-            <!-- <a href="#" name="submit" value="Submit" class="answears__btnsub answears__btnsub--sub ">Submit</a> -->
+<!-- 
+            <a href="#" name="submit" value="Submit" class="answears__btnsub answears__btnsub--sub ">Submit</a> -->
 
             <a href="#" class="answears__btnsub answears__btnsub--next nodisplay">Next Question</a>
 
