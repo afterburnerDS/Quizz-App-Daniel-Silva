@@ -254,6 +254,13 @@
         }
     }
 
+    .answears__item__button--correct,
+        .answears__item__button--incorrect{
+            
+            margin-right: .5rem;
+            margin-left: 1.5rem;
+        }
+
     .answears__item__button--correct{
         /* position: absolute;
         top: 0px;
